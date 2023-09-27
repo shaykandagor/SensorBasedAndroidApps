@@ -18,14 +18,13 @@ class BluetoothViewModel(
     val heartRateGraphData = heartRateResult
         // Converts a list to a float List
         .map { it.map { heartRate -> heartRate.toFloat() } }
-        .map { it.takeLast(20) }
+        .map { it.takeLast(10) }
         .map { entryModelOf(*it.toTypedArray()) }
 
 
 
     fun startScan() {
         appBluetoothManager.startScan()
-
     }
 
     fun stopScan() {
